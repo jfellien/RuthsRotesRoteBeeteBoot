@@ -1,7 +1,7 @@
 extends Node
 
-@export var radius = 20
-@export var interval = 3
+@export var radius := 20.0
+@export var interval := 3.0
 
 var beet := preload("res://scenes/beet.tscn")
 
@@ -11,7 +11,7 @@ func _ready():
 
 func spawn_beets_periodically():
 	while true:
-		var randomized_interval =  interval + randf_range(-interval/2, interval/2) 
+		var randomized_interval =  interval + randf_range(-interval/2.0, interval/2.0) 
 		await get_tree().create_timer(randomized_interval).timeout
 		var new_beet = beet.instantiate()
 		add_child(new_beet)

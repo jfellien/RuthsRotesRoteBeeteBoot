@@ -11,10 +11,12 @@ script = ExtResource("1_pa00e")
 innertia = 1.0
 innertia_step = 0.25
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("SphereShape3D_0ynhr")
-
 [node name="Sprite3D" type="Sprite3D" parent="."]
 texture = ExtResource("2_s62md")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_0ynhr")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_body_entered"]

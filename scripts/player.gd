@@ -10,7 +10,7 @@ extends Node3D
 func _process(_delta) -> void:
 	translate(Vector3(inertia_x, 0, inertia_y))
 	pass
-	
+
 func _input(event) -> void:
 	inertia_x += sensitivity * (event.get_action_strength("steer_left") - event.get_action_strength("steer_right"))
 	inertia_y += sensitivity * (event.get_action_strength("steer_up") - event.get_action_strength("steer_down"))
@@ -20,5 +20,3 @@ func _input(event) -> void:
 		
 	if inertia_y == 0.0:
 		inertia_y += randf_range(0, sensitivity) * (event.get_action_strength("steer_up") - event.get_action_strength("steer_down"))
-	
-

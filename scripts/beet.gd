@@ -31,3 +31,7 @@ func collect():
 	if is_instance_valid(tween):
 		tween.kill()
 	queue_free()
+
+
+func _on_body_entered(body):
+	collect()
