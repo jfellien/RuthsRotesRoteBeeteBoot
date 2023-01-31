@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var noise_tex = preload("res://materials/noise_tex.tres")
+@onready var noise_tex: Resource = preload("res://materials/noise_tex.tres")
 
 @export var speed = 5
 

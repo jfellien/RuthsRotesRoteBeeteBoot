@@ -4,7 +4,7 @@ extends AnimationPlayer
 func _ready():
 	set_autoplay("boat/boat_rock")
 
-func _process(delta):
+func _process(_delta):
 	speed_scale += randf_range(-0.05, 0.05)
 	
 	if speed_scale > 2:

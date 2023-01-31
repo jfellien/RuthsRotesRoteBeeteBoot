@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://4fgxqj5q6wk4"]
+
+[ext_resource type="Script" path="res://scripts/beet.gd" id="1_pa00e"]
+[ext_resource type="Texture2D" uid="uid://cag82p60vbtx0" path="res://materials/beet.png" id="2_s62md"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0ynhr"]
+radius = 1.8
+
+[node name="Beet" type="Node3D"]
+script = ExtResource("1_pa00e")
+innertia = 1.0
+innertia_step = 0.25
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("SphereShape3D_0ynhr")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = ExtResource("2_s62md")

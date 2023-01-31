@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://clnnc2u5ctih7"]
+
+[ext_resource type="Script" path="res://scripts/water_noise.gd" id="1_sfroh"]
+[ext_resource type="Material" uid="uid://nvuffosiejx7" path="res://materials/water.tres" id="2_wotjm"]
+[ext_resource type="PackedScene" uid="uid://ca72hbwyffx87" path="res://scenes/player.tscn" id="3_yw7q1"]
+[ext_resource type="Script" path="res://scripts/beet_spawner.gd" id="4_bf377"]
+[ext_resource type="PackedScene" uid="uid://4fgxqj5q6wk4" path="res://scenes/beet.tscn" id="5_fsvs3"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1uthh"]
+size = Vector2(160, 160)
+
+[node name="main" type="Node3D"]
+script = ExtResource("1_sfroh")
+speed = 30
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -60)
+material_override = ExtResource("2_wotjm")
+mesh = SubResource("PlaneMesh_1uthh")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.984808, -0.129046, 0.116193, 0, 0.669131, 0.743145, -0.173648, -0.731855, 0.658965, 24.2427, 35.0422, 20)
+current = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.5, -0.86273, -0.0754791, 0, -0.0871558, 0.996195, -0.866025, -0.498097, -0.0435779, 0, 100, 0)
+light_color = Color(1, 1, 0.654902, 1)
+light_energy = 2.0
+shadow_enabled = true
+shadow_opacity = 0.8
+shadow_blur = 0.5
+directional_shadow_mode = 1
+
+[node name="player" parent="." instance=ExtResource("3_yw7q1")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -9.68291)
+
+[node name="BeetSpawner" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -45)
+script = ExtResource("4_bf377")
+radius = 50
+
+[node name="Beet" parent="BeetSpawner" instance=ExtResource("5_fsvs3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.9421, -2, 21.5258)
