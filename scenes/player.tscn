@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://ca72hbwyffx87"]
+
+[ext_resource type="AnimationLibrary" uid="uid://dk22sliky6cu3" path="res://animations/boat.res" id="1_4p6ja"]
+[ext_resource type="PackedScene" uid="uid://35opl02a0pc1" path="res://scenes/boat.tscn" id="1_cm2bm"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_wsna4"]
+[ext_resource type="Script" path="res://scripts/boatAnim.gd" id="2_3m5nf"]
+
+[node name="player" type="Node3D"]
+script = ExtResource("1_wsna4")
+
+[node name="boat" parent="." instance=ExtResource("1_cm2bm")]
+transform = Transform3D(-4.37114e-08, 0, -2, 0, 1, 0, 1, 0, -8.74228e-08, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+reset_on_save = false
+libraries = {
+"boat": ExtResource("1_4p6ja")
+}
+script = ExtResource("2_3m5nf")

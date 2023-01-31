@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://35opl02a0pc1"]
+
+[ext_resource type="PackedScene" uid="uid://bh6ytc7npjfc" path="res://models/boat.glb" id="1_mqlax"]
+[ext_resource type="Material" uid="uid://bikpoo342pfd2" path="res://materials/boat_color.tres" id="2_65ut2"]
+
+[node name="boat" instance=ExtResource("1_mqlax")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="Boat_01" parent="." index="0"]
+material_override = ExtResource("2_65ut2")
