@@ -1,35 +1,46 @@
-[gd_scene load_steps=8 format=3 uid="uid://clnnc2u5ctih7"]
+[gd_scene load_steps=14 format=3 uid="uid://clnnc2u5ctih7"]
 
 [ext_resource type="Script" path="res://scripts/water_noise.gd" id="1_sfroh"]
 [ext_resource type="Material" uid="uid://nvuffosiejx7" path="res://materials/water.tres" id="2_wotjm"]
 [ext_resource type="PackedScene" uid="uid://ca72hbwyffx87" path="res://scenes/player.tscn" id="3_yw7q1"]
 [ext_resource type="Script" path="res://scripts/beet_spawner.gd" id="4_bf377"]
-[ext_resource type="PackedScene" uid="uid://4fgxqj5q6wk4" path="res://scenes/beet.tscn" id="5_fsvs3"]
 [ext_resource type="PackedScene" uid="uid://ujxkssjcem2s" path="res://scenes/thing.tscn" id="6_n1exc"]
+[ext_resource type="PackedScene" uid="uid://cs0rv86x2atk1" path="res://models/tree.glb" id="8_iq0mp"]
+[ext_resource type="PackedScene" uid="uid://c3fipbbql4s1m" path="res://models/fishingStand.glb" id="9_jhibt"]
+[ext_resource type="PackedScene" uid="uid://dkwy2ho2t54wd" path="res://models/fish.glb" id="10_tjhlb"]
+[ext_resource type="PackedScene" uid="uid://bkby4nhvx4r5m" path="res://models/structureCloth.glb" id="11_caecy"]
+[ext_resource type="PackedScene" uid="uid://gaxlbv65nuu6" path="res://models/rockFlatGrass.glb" id="12_fdipx"]
+[ext_resource type="Script" path="res://scripts/ui_controller.gd" id="12_kmhfj"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_1uthh"]
 size = Vector2(180, 180)
+
+[sub_resource type="Environment" id="Environment_t5fvn"]
+background_mode = 1
+background_color = Color(0.67451, 0.890196, 0.996078, 1)
+tonemap_mode = 3
 
 [node name="main" type="Node3D"]
 script = ExtResource("1_sfroh")
 speed = 30
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Water" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -69.5544)
 material_override = ExtResource("2_wotjm")
 mesh = SubResource("PlaneMesh_1uthh")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.984808, -0.129046, 0.116193, 0, 0.669131, 0.743145, -0.173648, -0.731855, 0.658965, 24.2427, 35.0422, 20)
+environment = SubResource("Environment_t5fvn")
 current = true
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.5, -0.86273, -0.0754791, 0, -0.0871558, 0.996195, -0.866025, -0.498097, -0.0435779, 0, 100, 0)
-light_energy = 2.0
-shadow_enabled = true
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.286643, -0.927168, -0.241239, -0.14735, -0.291476, 0.945161, -0.946638, -0.235377, -0.220168, 0, 100, 0)
+shadow_bias = 0.0
 shadow_opacity = 0.8
 shadow_blur = 0.5
-directional_shadow_mode = 1
+directional_shadow_mode = 0
+directional_shadow_split_1 = 0.172
 
 [node name="player" parent="." instance=ExtResource("3_yw7q1")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -9.68291)
@@ -38,8 +49,63 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -45)
 script = ExtResource("4_bf377")
 
-[node name="Beet" parent="BeetSpawner" instance=ExtResource("5_fsvs3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.9421, -2, 21.5258)
-
-[node name="thing2" parent="." instance=ExtResource("6_n1exc")]
+[node name="thing" parent="." instance=ExtResource("6_n1exc")]
 transform = Transform3D(-0.626644, 0.124072, -4.95902, 0.299871, 4.99024, 0.0869602, 4.9515, -0.286515, -0.632862, -2.74985, -18.5544, -44.7733)
+
+[node name="Scenery" type="Node3D" parent="."]
+
+[node name="tree" parent="Scenery" instance=ExtResource("8_iq0mp")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 74.1803, 0, -29.9882)
+
+[node name="tree2" parent="Scenery" instance=ExtResource("8_iq0mp")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 70.9505, 0.314625, -20.5497)
+
+[node name="tree3" parent="Scenery" instance=ExtResource("8_iq0mp")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 77.0559, 1.49992, -48.3425)
+
+[node name="tree4" parent="Scenery" instance=ExtResource("8_iq0mp")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 75.7725, 6.32733, -121.071)
+
+[node name="fishingStand" parent="Scenery" instance=ExtResource("9_jhibt")]
+transform = Transform3D(18.9395, -6.42614, 0, 6.42614, 18.9395, 0, 0, 0, 20, 74.9443, 1.13469, -38.6703)
+
+[node name="fish" parent="Scenery/fishingStand" instance=ExtResource("10_tjhlb")]
+transform = Transform3D(-0.187502, 0.777717, 0, -0.777717, -0.187502, 0, 0, 0, 0.8, 0.000900745, 0.13568, 0)
+
+[node name="structureCloth" parent="Scenery" instance=ExtResource("11_caecy")]
+transform = Transform3D(8.78408, -5.4376, -28.1651, -2.65589, 29.1754, -6.46096, 28.562, 4.38524, 8.06124, 87.0778, -1.06609, -116.02)
+
+[node name="rockFlatGrass" parent="Scenery" instance=ExtResource("12_fdipx")]
+transform = Transform3D(19.6666, -3.63647, 0, 3.59176, 19.4248, -3.12662, 0.568493, 3.0745, 19.7541, 65.7735, 1.37973, -139.506)
+
+[node name="rockFlatGrass2" parent="Scenery" instance=ExtResource("12_fdipx")]
+transform = Transform3D(12.4428, 0, 22.8293, 0, 26, 0, -22.8293, 0, 12.4428, -93.8737, 1.33514e-05, -62.8941)
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("12_kmhfj")
+
+[node name="Panel" type="Panel" parent="UI"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 172.0
+offset_bottom = 92.0
+
+[node name="Label" type="Label" parent="UI/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[connection signal="beet_collected" from="BeetSpawner" to="UI" method="_on_beet_spawner_beet_collected"]

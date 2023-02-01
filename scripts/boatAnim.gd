@@ -1,6 +1,6 @@
 extends AnimationPlayer
 
-# Called when the node enters the scene tree for the first time.
+#@Janek, kannst mal gucken wie man die Ani hübscher startet, GDscript wirft mir hier ne Warning
 func _ready():
 	set_autoplay("boat/boat_rock")
 

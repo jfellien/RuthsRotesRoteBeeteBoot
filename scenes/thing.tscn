@@ -1,10 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://ujxkssjcem2s"]
+[gd_scene load_steps=4 format=3 uid="uid://ujxkssjcem2s"]
 
 [ext_resource type="PackedScene" uid="uid://djx4v440hhsak" path="res://models/thing.glb" id="1_lf6bi"]
-[ext_resource type="Material" uid="uid://dfms0tssgvwc3" path="res://materials/beach.tres" id="2_n7rn5"]
+[ext_resource type="Material" uid="uid://c8g2gbvfe8bu0" path="res://materials/grass.tres" id="2_rp0lf"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_nqjau"]
 
 [node name="thing" instance=ExtResource("1_lf6bi")]
 
 [node name="Cube" parent="." index="0"]
 transform = Transform3D(20, 0, 0, 0, 8, 0, 0, 0, 20, -4.36893, 0, 0)
-material_override = ExtResource("2_n7rn5")
+material_override = ExtResource("2_rp0lf")
+
+[node name="patch" type="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(0.0987948, -11.8318, 4.12493, -0.0227227, 5.35785, 9.10958, -9.99948, -0.129073, 0.0200538, -15.9962, 2.3352, -2.09749)
+mesh = SubResource("QuadMesh_nqjau")
+surface_material_override/0 = ExtResource("2_rp0lf")

@@ -1,5 +1,7 @@
 extends Node3D
 
+@export var points := 20
+
 @export var surface := 0.0
 @export var innertia := 0.0
 @export var innertia_step = 0.05
@@ -9,6 +11,11 @@ extends Node3D
 var rotting := false
 var tween: Tween = null
 
+signal collected(points: int)
+
+#Beets will suface from the ground and slowly rot afterwards
+#Nobody can read this code. Not even I know wtf I was thinking here
+#It was late at night ok?
 func _physics_process(delta):
 	if (not rotting) and innertia < 0 and position.y < surface:
 		rot()
@@ -17,7 +24,6 @@ func _physics_process(delta):
 		innertia += innertia_step * 3
 	else:
 		innertia -= innertia_step
-	
 	
 func rot():
 	rotting = true
@@ -28,10 +34,12 @@ func rot():
 	tween.tween_callback(self.queue_free)
 
 func collect():
+	collected.emit(points)
 	if is_instance_valid(tween):
 		tween.kill()
 	queue_free()
 
-
-func _on_body_entered(body):
+#The only CollisionBody in the game is the player.
+#I made my life very easy here
+func _on_body_entered(_body):
 	collect()

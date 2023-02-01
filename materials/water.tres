@@ -4,9 +4,11 @@
 
 [resource]
 render_priority = 1
+transparency = 1
+depth_draw_mode = 1
 shading_mode = 2
-specular_mode = 1
-albedo_color = Color(0.0666667, 0.47451, 1, 1)
+albedo_color = Color(0.0666667, 0.47451, 1, 0.223529)
+albedo_texture = ExtResource("1_wj6nj")
 metallic = 0.73
 metallic_specular = 0.4
 roughness_texture = ExtResource("1_wj6nj")

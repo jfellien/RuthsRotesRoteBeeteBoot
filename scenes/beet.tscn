@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/beet.gd" id="1_pa00e"]
 [ext_resource type="Texture2D" uid="uid://cag82p60vbtx0" path="res://materials/beet.png" id="2_s62md"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_0ynhr"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_44xjo"]
 radius = 1.8
 
 [node name="Beet" type="Node3D"]
@@ -17,6 +17,6 @@ texture = ExtResource("2_s62md")
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("SphereShape3D_0ynhr")
+shape = SubResource("SphereShape3D_44xjo")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_body_entered"]
